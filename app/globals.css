@@ -49,6 +49,10 @@ body {
 
 .custom-cursor * {
   cursor: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
 }
 
 .custom-cursor a,
