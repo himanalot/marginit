@@ -111,7 +111,7 @@ export default function Home() {
         {/* Main Content */}
         <div className="min-h-[calc(100vh-3.5rem)] sm:min-h-[calc(100vh-4.5rem)] flex flex-col justify-between items-center text-center px-3 sm:px-4">
           {/* Background overlay */}
-          <div className="absolute top-0 left-0 -z-50 size-full bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100"></div>
+          <div className="fixed top-0 left-0 w-full h-full -z-50 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100"></div>
           
           <div className="max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-3xl mx-auto w-full flex-1 flex flex-col justify-center -mt-8 sm:-mt-12 md:-mt-16" style={{ opacity: 1 }}>
             {/* Sponsor badge */}
