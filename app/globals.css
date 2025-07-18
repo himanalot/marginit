@@ -1,26 +1,259 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --background: 0 0% 100%;
+  --foreground: 0 0% 9%;
+  --border: 0 0% 89%;
+  --input: 0 0% 89%;
+  --ring: 0 0% 63%;
+  --primary: 221 83% 53%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 9%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 45%;
+  --accent: 0 0% 96%;
+  --accent-foreground: 0 0% 9%;
+  --neutral-50: 250 20% 99%;
+  --neutral-100: 240 5% 96%;
+  --neutral-200: 240 6% 90%;
+  --neutral-300: 240 5% 84%;
+  --neutral-400: 240 5% 65%;
+  --neutral-500: 240 4% 46%;
+  --neutral-600: 240 5% 34%;
+  --neutral-700: 240 5% 26%;
+  --neutral-800: 240 4% 16%;
+  --neutral-900: 240 6% 10%;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
   }
 }
 
+* {
+  border-color: hsl(var(--border));
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', sans-serif;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+  animation-delay: 4s;
+}
+
+.font-be-vietnam-pro {
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.font-sans {
+  font-family: 'Inter', sans-serif;
+}
+
+.h-7\.5 {
+  height: 1.875rem;
+}
+
+.size-7\.5 {
+  width: 1.875rem;
+  height: 1.875rem;
+}
+
+.field-sizing-content {
+  field-sizing: content;
+}
+
+.shadow-xs {
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+}
+
+.touch-manipulation {
+  touch-action: manipulation;
+}
+
+.min-720\:flex {
+  @media (min-width: 720px) {
+    display: flex;
+  }
+}
+
+.min-720\:text-5xl {
+  @media (min-width: 720px) {
+    font-size: 3rem;
+    line-height: 1;
+  }
+}
+
+.min-720\:max-w-\[500px\] {
+  @media (min-width: 720px) {
+    max-width: 500px;
+  }
+}
+
+.min-720\:max-w-\[450px\] {
+  @media (min-width: 720px) {
+    max-width: 450px;
+  }
+}
+
+.min-720\:px-6 {
+  @media (min-width: 720px) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.min-720\:pb-20 {
+  @media (min-width: 720px) {
+    padding-bottom: 5rem;
+  }
+}
+
+.min-720\:pt-\[156px\] {
+  @media (min-width: 720px) {
+    padding-top: 156px;
+  }
+}
+
+.min-720\:size-22 {
+  @media (min-width: 720px) {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+}
+
+.min-720\:mb-8 {
+  @media (min-width: 720px) {
+    margin-bottom: 2rem;
+  }
+}
+
+.min-720\:h-6 {
+  @media (min-width: 720px) {
+    height: 1.5rem;
+  }
+}
+
+.min-720\:gap-x-12 {
+  @media (min-width: 720px) {
+    column-gap: 3rem;
+  }
+}
+
+.min-720\:inline {
+  @media (min-width: 720px) {
+    display: inline;
+  }
+}
+
+.min-1280\:px-0 {
+  @media (min-width: 1280px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.min-1280\:pb-24 {
+  @media (min-width: 1280px) {
+    padding-bottom: 6rem;
+  }
+}
+
+.min-1280\:pt-\[180px\] {
+  @media (min-width: 1280px) {
+    padding-top: 180px;
+  }
+}
+
+.min-1280\:text-6xl {
+  @media (min-width: 1280px) {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+}
+
+.min-1280\:max-w-\[700px\] {
+  @media (min-width: 1280px) {
+    max-width: 700px;
+  }
+}
+
+.min-1280\:max-w-\[640px\] {
+  @media (min-width: 1280px) {
+    max-width: 640px;
+  }
+}
+
+.min-1280\:pt-6 {
+  @media (min-width: 1280px) {
+    padding-top: 1.5rem;
+  }
+}
+
+.glassmorphism-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+
+.glassmorphism-btn-secondary {
+  background: rgba(59, 130, 246, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 8px;
+  color: #3B82F6;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.glassmorphism-btn-secondary:hover {
+  background: rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
