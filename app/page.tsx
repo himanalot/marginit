@@ -103,8 +103,8 @@ export default function Home() {
   );
 
   return (
-    <div className="font-sans antialiased custom-cursor">
-      <CustomCursor />
+    <div className={`font-sans antialiased ${!showContactModal ? 'custom-cursor' : ''}`}>
+      {!showContactModal && <CustomCursor />}
       <div>
         <Navbar showContactModal={showContactModal} setShowContactModal={setShowContactModal} enableAnimation={true} />
 
