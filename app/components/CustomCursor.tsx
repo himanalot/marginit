@@ -7,6 +7,7 @@ export default function CustomCursor() {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [rotation, setRotation] = useState(0);
+  const [isOnSite, setIsOnSite] = useState(false);
   const prevPosition = useRef({ x: 0, y: 0 });
   const currentRotation = useRef(0);
   const animationFrame = useRef<number | undefined>(undefined);
@@ -44,6 +45,13 @@ export default function CustomCursor() {
     const updateMousePosition = (e: MouseEvent) => {
       const newX = e.clientX;
       const newY = e.clientY;
+      
+      // Show cursor on first mouse movement
+      if (!isOnSite) {
+        setIsOnSite(true);
+        setCursorPosition({ x: newX, y: newY });
+        prevPosition.current = { x: newX, y: newY };
+      }
       
       // Calculate movement vector
       const deltaX = newX - prevPosition.current.x;
@@ -103,6 +111,7 @@ export default function CustomCursor() {
       className={`cursor-arrow ${isHovering ? 'cursor-hover' : ''}`}
       style={{
         transform: `translate(${cursorPosition.x}px, ${cursorPosition.y}px) rotate(${rotation}deg) ${isHovering ? 'scale(1.2)' : 'scale(1)'}`,
+        opacity: isOnSite ? 1 : 0,
       }}
     >
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
