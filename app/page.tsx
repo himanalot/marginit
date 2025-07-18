@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Navbar from "./components/Navbar";
 
 export default function Home() {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
   const [waitlistCount, setWaitlistCount] = useState(0);
-  const [navbarExpanded, setNavbarExpanded] = useState(false);
   const [boxWidth, setBoxWidth] = useState(280);
 
   useEffect(() => {
@@ -37,9 +37,6 @@ export default function Home() {
 
     fetchWaitlistCount();
     updateBoxWidth();
-
-    // Trigger navbar expansion immediately
-    setNavbarExpanded(true);
 
     window.addEventListener('resize', updateBoxWidth);
     return () => window.removeEventListener('resize', updateBoxWidth);
@@ -107,70 +104,7 @@ export default function Home() {
   return (
     <div className="font-sans antialiased">
       <div>
-        <div className="mx-4 md:mx-0">
-          {/* Header */}
-          <header className="px-6 h-14 flex justify-between items-center bg-accent/80 backdrop-blur-sm border border-white/20 rounded-2xl mx-auto mt-4 pl-4 pr-[14px] relative z-50 max-w-3xl overflow-hidden"
-                  style={{
-                    width: navbarExpanded ? '100%' : '4rem',
-                    transition: 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-                  }}>
-            <div className="flex items-center min-w-0">
-              <a className="flex items-center gap-3 cursor-pointer relative" href="/">
-                <div className="w-8 h-8 overflow-hidden flex-shrink-0 relative z-20">
-                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clipPath="url(#clip0_marginit_logo)">
-                      <rect width="32" height="32" fill="#3B82F6"/>
-                      <path d="M8 24V8h3.2l4.8 9.6L20.8 8H24v16h-2.4V12.8L17.6 20h-1.2L12.4 12.8V24H8z" fill="white"/>
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_marginit_logo">
-                        <rect width="32" height="32" rx="8" fill="white"/>
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </div>
-                <span className="text-xl font-medium whitespace-nowrap hidden md:block absolute left-8 z-10"
-                      style={{
-                        opacity: navbarExpanded ? 1 : 0,
-                        transform: navbarExpanded ? 'translateX(4px)' : 'translateX(-20px)',
-                        transition: 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s',
-                      }}>MarginIt</span>
-              </a>
-            </div>
-            <div className="flex items-center min-w-0"
-                 style={{
-                   opacity: navbarExpanded ? 1 : 0,
-                   transform: navbarExpanded ? 'translateX(0)' : 'translateX(20px)',
-                   transition: 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s, transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s',
-                 }}>
-              <nav className="flex items-center gap-3">
-                <a href="/careers" className="text-sm hover:text-muted-foreground cursor-pointer px-2 py-1 whitespace-nowrap group">
-                  <div className="relative overflow-hidden h-5">
-                    <span className="block transition-transform duration-300 ease-in-out group-hover:-translate-y-5">
-                      Careers
-                    </span>
-                    <span className="absolute top-0 left-0 block transition-transform duration-300 ease-in-out translate-y-5 group-hover:translate-y-0">
-                      Careers
-                    </span>
-                  </div>
-                </a>
-                <button onClick={() => setShowContactModal(true)} className="bg-foreground text-background px-3 py-1 rounded text-sm hover:bg-foreground/90 cursor-pointer flex items-center gap-1 whitespace-nowrap group">
-                  Contact Us
-                  <div className="relative w-4 h-4 overflow-hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 ease-in-out group-hover:translate-x-5">
-                      <path d="M5 12h14"></path>
-                      <path d="m12 5 7 7-7 7"></path>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="absolute top-0 left-0 transition-transform duration-300 ease-in-out -translate-x-5 group-hover:translate-x-0">
-                      <path d="M5 12h14"></path>
-                      <path d="m12 5 7 7-7 7"></path>
-                    </svg>
-                  </div>
-                </button>
-              </nav>
-            </div>
-          </header>
-        </div>
+        <Navbar showContactModal={showContactModal} setShowContactModal={setShowContactModal} enableAnimation={true} />
 
         {/* Main Content */}
         <div className="min-h-[calc(100vh-3.5rem)] sm:min-h-[calc(100vh-4.5rem)] flex flex-col justify-between items-center text-center px-3 sm:px-4">
