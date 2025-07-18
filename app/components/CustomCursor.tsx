@@ -4,10 +4,12 @@ import { useEffect, useState, useRef } from "react";
 
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [rotation, setRotation] = useState(0);
   const prevPosition = useRef({ x: 0, y: 0 });
   const currentRotation = useRef(0);
+  const animationFrame = useRef<number | undefined>(undefined);
 
   // Function to normalize angle to shortest path
   const normalizeAngle = (newAngle: number, currentAngle: number) => {
@@ -18,6 +20,24 @@ export default function CustomCursor() {
     while (diff < -180) diff += 360;
     
     return currentAngle + diff;
+  };
+
+  // Smooth animation function
+  const animateCursor = () => {
+    setCursorPosition(current => {
+      const deltaX = mousePosition.x - current.x;
+      const deltaY = mousePosition.y - current.y;
+      
+      // Easing factor (0.1 = slower, 0.3 = faster)
+      const ease = 0.15;
+      
+      return {
+        x: current.x + deltaX * ease,
+        y: current.y + deltaY * ease
+      };
+    });
+    
+    animationFrame.current = requestAnimationFrame(animateCursor);
   };
 
   useEffect(() => {
@@ -61,20 +81,28 @@ export default function CustomCursor() {
       el.addEventListener('mouseleave', handleMouseLeave);
     });
 
+    // Start animation loop
+    animateCursor();
+
     return () => {
       document.removeEventListener('mousemove', updateMousePosition);
       interactiveElements.forEach(el => {
         el.removeEventListener('mouseenter', handleMouseEnter);
         el.removeEventListener('mouseleave', handleMouseLeave);
       });
+      
+      // Clean up animation frame
+      if (animationFrame.current) {
+        cancelAnimationFrame(animationFrame.current);
+      }
     };
-  }, []);
+  }, [mousePosition]);
 
   return (
     <div
       className={`cursor-arrow ${isHovering ? 'cursor-hover' : ''}`}
       style={{
-        transform: `translate(${mousePosition.x}px, ${mousePosition.y}px) rotate(${rotation}deg) ${isHovering ? 'scale(1.2)' : 'scale(1)'}`,
+        transform: `translate(${cursorPosition.x}px, ${cursorPosition.y}px) rotate(${rotation}deg) ${isHovering ? 'scale(1.2)' : 'scale(1)'}`,
       }}
     >
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
