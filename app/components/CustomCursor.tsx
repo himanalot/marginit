@@ -11,6 +11,7 @@ export default function CustomCursor() {
   const prevPosition = useRef({ x: 0, y: 0 });
   const currentRotation = useRef(0);
   const animationFrame = useRef<number | undefined>(undefined);
+  const [isSafari, setIsSafari] = useState(false);
 
   // Function to normalize angle to shortest path
   const normalizeAngle = (newAngle: number, currentAngle: number) => {
@@ -40,6 +41,13 @@ export default function CustomCursor() {
     
     animationFrame.current = requestAnimationFrame(animateCursor);
   };
+
+  useEffect(() => {
+    // Detect Safari browser
+    const userAgent = navigator.userAgent;
+    const isSafariBrowser = /^((?!chrome|android).)*safari/i.test(userAgent);
+    setIsSafari(isSafariBrowser);
+  }, []);
 
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
@@ -106,6 +114,39 @@ export default function CustomCursor() {
     };
   }, [mousePosition]);
 
+  if (isSafari) {
+    // Safari: Use CSS positioning instead of transforms to avoid layer splitting
+    return (
+      <div
+        className="cursor-arrow"
+        style={{
+          position: 'fixed',
+          left: `${mousePosition.x}px`,
+          top: `${mousePosition.y}px`,
+          width: '24px',
+          height: '24px',
+          pointerEvents: 'none',
+          zIndex: 9999,
+          opacity: isOnSite ? 1 : 0,
+          transform: isHovering ? 'scale(1.2)' : 'scale(1)',
+          transformOrigin: 'center',
+        }}
+      >
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M4 4L20 12L12 16L8 20L4 4Z"
+            fill="#A8BCED"
+            stroke="#8BA4E3"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+    );
+  }
+
+  // Chrome and other browsers: Original with smooth movement and rotation
   return (
     <div
       className={`cursor-arrow ${isHovering ? 'cursor-hover' : ''}`}
