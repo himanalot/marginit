@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
+import CustomCursor from "./components/CustomCursor";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -102,7 +103,8 @@ export default function Home() {
   );
 
   return (
-    <div className="font-sans antialiased">
+    <div className="font-sans antialiased custom-cursor">
+      <CustomCursor />
       <div>
         <Navbar showContactModal={showContactModal} setShowContactModal={setShowContactModal} enableAnimation={true} />
 
