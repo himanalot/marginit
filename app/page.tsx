@@ -8,7 +8,7 @@ export default function Home() {
   const [showContactModal, setShowContactModal] = useState(false);
   const [waitlistCount, setWaitlistCount] = useState(0);
   const [navbarExpanded, setNavbarExpanded] = useState(false);
-  const [boxWidth, setBoxWidth] = useState(200);
+  const [boxWidth, setBoxWidth] = useState(280);
 
   useEffect(() => {
     const fetchWaitlistCount = async () => {
@@ -29,9 +29,9 @@ export default function Home() {
       } else if (window.innerWidth >= 768) {
         setBoxWidth(350);
       } else if (window.innerWidth >= 640) {
-        setBoxWidth(280);
+        setBoxWidth(300);
       } else {
-        setBoxWidth(200);
+        setBoxWidth(280);
       }
     };
 
@@ -173,15 +173,15 @@ export default function Home() {
         </div>
 
         {/* Main Content */}
-        <div className="min-h-[calc(100vh-4.5rem)] flex flex-col justify-between items-center text-center px-4">
+        <div className="min-h-[calc(100vh-3.5rem)] sm:min-h-[calc(100vh-4.5rem)] flex flex-col justify-between items-center text-center px-3 sm:px-4">
           {/* Background overlay */}
           <div className="absolute top-0 left-0 -z-50 size-full bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100"></div>
           
-          <div className="max-w-3xl mx-auto w-full flex-1 flex flex-col justify-center -mt-16" style={{ opacity: 1 }}>
+          <div className="max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-3xl mx-auto w-full flex-1 flex flex-col justify-center -mt-8 sm:-mt-12 md:-mt-16" style={{ opacity: 1 }}>
             {/* Sponsor badge */}
-            <div className="mb-6 flex justify-center" style={{ opacity: 1 }}>
-              <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/20 transition-all duration-200 group shadow-lg cursor-pointer relative z-10">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <div className="mb-4 sm:mb-6 flex justify-center" style={{ opacity: 1 }}>
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/20 transition-all duration-200 group shadow-lg cursor-pointer relative z-10">
+                <svg width="16" height="16" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" className="sm:w-[18px] sm:h-[18px]">
                   <g clipPath="url(#clip0_585_86819)">
                     <g clipPath="url(#clip1_585_86819)">
                       <g clipPath="url(#clip2_585_86819)">
@@ -207,27 +207,27 @@ export default function Home() {
                     </clipPath>
                   </defs>
                 </svg>
-                <span className="text-xs font-medium text-zinc-400 group-hover:text-zinc-300 transition-colors">
+                <span className="text-xs sm:text-xs font-medium text-zinc-400 group-hover:text-zinc-300 transition-colors">
                   Sponsored by Nobody
                 </span>
               </div>
             </div>
 
             {/* Main heading */}
-            <div className="inline-block font-bold tracking-tighter text-2xl sm:text-3xl md:text-4xl lg:text-[4rem]" style={{ opacity: 1 }}>
-              <h1 className="text-center">The Finance Platform for</h1>
-              <div className="flex justify-center gap-2 sm:gap-4 leading-8 sm:leading-12 md:leading-16 lg:leading-[4rem] mt-2 md:mt-4">
-                <div className="relative -rotate-[2.76deg] mt-1 sm:mt-2" style={{ width: boxWidth }}>
+            <div className="inline-block font-bold tracking-tighter text-4xl sm:text-5xl md:text-6xl lg:text-[4rem]" style={{ opacity: 1 }}>
+              <h1 className="text-center leading-tight">The Finance Platform for</h1>
+              <div className="flex justify-center gap-2 sm:gap-4 leading-12 sm:leading-14 md:leading-16 lg:leading-[4rem] mt-1 sm:mt-2 md:mt-4">
+                <div className="relative -rotate-[2.76deg] mt-1 sm:mt-2 transition-all duration-300 ease-out" style={{ width: boxWidth }}>
                   <div className="absolute inset-0 w-full h-full rounded-2xl border border-primary flex justify-between">
-                    <div className="h-full border border-primary w-7 rounded-full bg-accent flex items-center justify-center absolute left-0 z-10">
+                    <div className="h-full border border-primary w-7 rounded-full flex items-center justify-center absolute left-0 z-20" style={{ backgroundColor: '#e0e7ff' }}>
                       <div className="w-2 h-8 rounded-full bg-primary"></div>
                     </div>
-                    <div className="h-full border border-primary w-7 rounded-full bg-accent flex items-center justify-center absolute z-10" style={{ left: '-30px', transform: `translateX(${boxWidth}px)` }}>
+                    <div className="h-full border border-primary w-7 rounded-full flex items-center justify-center absolute z-20 transition-transform duration-300 ease-out" style={{ left: '-30px', transform: `translateX(${boxWidth}px)`, backgroundColor: '#e0e7ff' }}>
                       <div className="w-2 h-8 rounded-full bg-primary"></div>
                     </div>
                   </div>
-                  <div className="relative overflow-hidden rounded-2xl" style={{ height: '100%', width: boxWidth }}>
-                    <div className="w-full h-full flex items-center justify-center px-4 whitespace-nowrap">
+                  <div className="relative overflow-hidden rounded-2xl transition-all duration-300 ease-out z-10" style={{ height: '100%', width: boxWidth }}>
+                    <div className="w-full h-full flex items-center justify-center px-4 whitespace-nowrap transition-all duration-300 ease-out" style={{ paddingLeft: '32px', paddingRight: '32px' }}>
                       Students
                     </div>
                   </div>
@@ -236,19 +236,19 @@ export default function Home() {
             </div>
 
             {/* Description */}
-            <p className="mt-6 sm:mt-8 md:mt-10 text-sm sm:text-base md:text-lg lg:text-xl text-muted-foreground font-light tracking-wide max-w-xs sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto px-4" style={{ opacity: 1 }}>
+            <p className="mt-4 sm:mt-6 md:mt-8 lg:mt-10 text-lg sm:text-xl md:text-2xl lg:text-3xl text-muted-foreground font-light tracking-wide max-w-sm sm:max-w-lg md:max-w-xl lg:max-w-2xl mx-auto px-2 sm:px-4 leading-relaxed" style={{ opacity: 1 }}>
               A simple but powerful social finance platform that helps you connect with students worldwide.
             </p>
 
             {/* Waitlist form */}
-            <div className="mt-8 sm:mt-10 md:mt-12 flex gap-4 sm:gap-6 md:gap-8 justify-center px-4" style={{ opacity: 1 }}>
-              <form onSubmit={handleSubmit} className="flex gap-3 w-full max-w-xs sm:max-w-md md:max-w-lg flex-col sm:flex-row">
+            <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 flex gap-3 sm:gap-4 md:gap-6 lg:gap-8 justify-center px-3 sm:px-4" style={{ opacity: 1 }}>
+              <form onSubmit={handleSubmit} className="flex gap-2.5 sm:gap-3 w-full max-w-sm sm:max-w-md md:max-w-lg flex-col sm:flex-row">
                 <div className="relative w-full">
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="flex w-full rounded-md border border-input bg-transparent px-3 py-2 sm:py-1 shadow-sm file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 text-sm sm:text-base h-10 sm:h-11 flex-1"
+                    className="flex w-full rounded-md border border-input bg-transparent px-3 py-2.5 sm:py-2 md:py-1 shadow-sm file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 text-sm sm:text-base h-11 sm:h-10 md:h-11 flex-1"
                     placeholder="Enter your email"
                     required
                     disabled={isSubmitting}
@@ -257,7 +257,7 @@ export default function Home() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-foreground text-background shadow hover:bg-foreground/90 rounded-md px-4 sm:px-6 h-10 sm:h-11 text-sm sm:text-base cursor-pointer group"
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-foreground text-background shadow hover:bg-foreground/90 rounded-md px-5 sm:px-4 md:px-6 h-11 sm:h-10 md:h-11 text-sm sm:text-base cursor-pointer group"
                 >
                   <span className="relative z-10">{isSubmitting ? 'Joining...' : 'Join waitlist'}</span>
                   <div className="relative w-4 h-4 overflow-hidden ml-0.5">
@@ -275,7 +275,7 @@ export default function Home() {
             </div>
 
             {/* Member count */}
-            <div className="mt-6 sm:mt-8 inline-flex items-center gap-2 text-xs sm:text-sm text-muted-foreground justify-center px-4" style={{ opacity: 1 }}>
+            <div className="mt-4 sm:mt-6 md:mt-8 inline-flex items-center gap-2 text-xs sm:text-sm text-muted-foreground justify-center px-3 sm:px-4" style={{ opacity: 1 }}>
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
               <span className="text-center">
                 {waitlistCount > 0 

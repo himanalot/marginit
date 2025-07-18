@@ -186,13 +186,19 @@ export default function Careers() {
               </p>
               <a 
                 href="mailto:vs.saicharan@gmail.com?subject=General Application&body=Hi, I'm interested in opportunities at MarginIt.%0D%0A%0D%0APlease find my details below:"
-                className="bg-primary text-primary-foreground px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-md sm:rounded-lg text-sm sm:text-base md:text-lg hover:bg-primary/90 cursor-pointer flex items-center gap-2 mx-auto w-fit transition-all duration-200"
+                className="bg-primary text-primary-foreground px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-md sm:rounded-lg text-sm sm:text-base md:text-lg hover:bg-primary/90 cursor-pointer flex items-center gap-2 mx-auto w-fit transition-all duration-200 group"
               >
                 <span>Get in Touch</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 sm:w-5 sm:h-5">
-                  <path d="M5 12h14"></path>
-                  <path d="m12 5 7 7-7 7"></path>
-                </svg>
+                <div className="relative w-4 h-4 sm:w-5 sm:h-5 overflow-hidden ml-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 ease-in-out group-hover:translate-x-5">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 sm:w-5 sm:h-5 absolute top-0 left-0 transition-transform duration-300 ease-in-out -translate-x-5 group-hover:translate-x-0">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </div>
               </a>
             </div>
             </div>
