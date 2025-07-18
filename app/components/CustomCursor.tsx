@@ -107,10 +107,10 @@ export default function CustomCursor() {
     >
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
-          d="M3 3L21 12L12 15L9 21L3 3Z"
-          fill="none"
-          stroke="#1f2937"
-          strokeWidth="2"
+          d="M4 4L20 12L12 16L8 20L4 4Z"
+          fill="#3B82F6"
+          stroke="#2563EB"
+          strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />

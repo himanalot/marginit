@@ -41,6 +41,10 @@ body {
 /* Custom cursor styles */
 .custom-cursor {
   cursor: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .custom-cursor * {
@@ -60,8 +64,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   pointer-events: none;
   z-index: 9999;
   transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
